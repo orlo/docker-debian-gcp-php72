@@ -7,10 +7,10 @@ ARG http_proxy=""
 ARG https_proxy=""
 
 # http://pecl.php.net/package/grpc
-ENV GRPC_VERSION 1.22.0
+ENV GRPC_VERSION 1.28.0
 
 # http://pecl.php.net/package/protobuf
-ENV PROTOBUF_VERSION 3.8.0
+ENV PROTOBUF_VERSION 3.11.4
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get -q update && \
     apt-get install -y eatmydata  && \
@@ -46,8 +46,6 @@ RUN apt-get -qq update && \
     apt-get clean && \
     rm -Rf /var/lib/apt/lists/* && \
     a2enmod headers rewrite deflate php7.2
-
-RUN echo GMT > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata 
 
 COPY ./provisioning/php.ini /etc/php/7.2/apache2/conf.d/local.ini
 COPY ./provisioning/php.ini /etc/php/7.2/cli/conf.d/local.ini

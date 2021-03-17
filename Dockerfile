@@ -7,10 +7,10 @@ ARG http_proxy=""
 ARG https_proxy=""
 
 # http://pecl.php.net/package/grpc
-ENV GRPC_VERSION 1.28.0
+ENV GRPC_VERSION 1.33.1
 
 # http://pecl.php.net/package/protobuf
-ENV PROTOBUF_VERSION 3.11.4
+ENV PROTOBUF_VERSION 3.13.0.1
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get -q update && \
     apt-get install -y eatmydata  && \

@@ -45,6 +45,7 @@ RUN apt-get -qq update && \
     eatmydata -- apt-get -y autoremove && \
     apt-get clean && \
     rm -Rf /var/lib/apt/lists/* && \
+    update-alternatives --set php /usr/bin/php7.2 && \
     a2enmod headers rewrite deflate php7.2
 
 COPY ./provisioning/php.ini /etc/php/7.2/apache2/conf.d/local.ini
